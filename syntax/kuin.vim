@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/03/25 00:15:29.
+" Last Modified:2013/07/25 00:14:20.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -12,9 +12,7 @@ endif
 
 "set foldmethod=syntax
 
-" NOTE: import sentence won't have suffix
-" e.g. import test
-" set suffixesadd=.kn will enable "gf" command on "test" above.
+" suffixesadd is for "gf" command.
 set suffixesadd=.kn
 
 syntax case match
@@ -31,7 +29,7 @@ syn region  kuinBlockCommen_t
             \ contains=kuinBlockCommen_t,kuinString,kuinCharacter,kuinTodo
 " }}}1
 " *Constant {{{1
-syn keyword kuinConstant null nan inf
+syn keyword kuinConstant null inf
 syn region  kuinString
             \ start=/"/
             \ end=/"\|$/
@@ -46,9 +44,7 @@ syn match   kuinError  /\v<\d\w+>/      " e.g. 1000_000 => Error, 100yen => Erro
 syn match   kuinNumber /\v<0%(\.\d+)=>/
 syn match   kuinNumber /\v<[1-9]\d*%(\.\d+)=>/
 syn match   kuinError  /\v<10#/         " e.g.  10#9999 => Error
-syn match   kuinError  /\v<16#/         " e.g.  16#FFFF => Error
 syn match   kuinError  /\v<\d+#\w+>/    " e.g. 100#FFFF => Error, 8#8888 => Error
-syn match   kuinError  /\v<#\w*>/       " e.g.    #GGGG => Error
 syn match   kuinNumber /\v<2#[0-1]+%(\.[0-1]+)=>/
 syn match   kuinNumber /\v<3#[0-2]+%(\.[0-2]+)=>/
 syn match   kuinNumber /\v<4#[0-3]+%(\.[0-3]+)=>/
@@ -57,32 +53,32 @@ syn match   kuinNumber /\v<6#[0-5]+%(\.[0-5]+)=>/
 syn match   kuinNumber /\v<7#[0-6]+%(\.[0-6]+)=>/
 syn match   kuinNumber /\v<8#[0-7]+%(\.[0-7]+)=>/
 syn match   kuinNumber /\v<9#[0-8]+%(\.[0-8]+)=>/
-syn match   kuinNumber /\v<11#[0-9A]+%(\.[0-9A]+)=>/
-syn match   kuinNumber /\v<12#[0-9AB]+%(\.[0-9AB]+)=>/
-syn match   kuinNumber /\v<13#[0-9A-C]+%(\.[0-9A-C]+)=>/
-syn match   kuinNumber /\v<14#[0-9A-D]+%(\.[0-9A-D]+)=>/
-syn match   kuinNumber /\v<15#[0-9A-E]+%(\.[0-9A-E]+)=>/
-syn match   kuinNumber /\v[^a-zA-Z]#[0-9A-F]+%(\.[0-9A-F]+)=>/ " #FFFF
-syn match   kuinNumber /\v<17#[0-9A-G]+%(\.[0-9A-G]+)=>/
-syn match   kuinNumber /\v<18#[0-9A-H]+%(\.[0-9A-H]+)=>/
-syn match   kuinNumber /\v<19#[0-9A-I]+%(\.[0-9A-I]+)=>/
-syn match   kuinNumber /\v<20#[0-9A-J]+%(\.[0-9A-J]+)=>/
-syn match   kuinNumber /\v<21#[0-9A-K]+%(\.[0-9A-K]+)=>/
-syn match   kuinNumber /\v<22#[0-9A-L]+%(\.[0-9A-L]+)=>/
-syn match   kuinNumber /\v<23#[0-9A-M]+%(\.[0-9A-M]+)=>/
-syn match   kuinNumber /\v<24#[0-9A-N]+%(\.[0-9A-N]+)=>/
-syn match   kuinNumber /\v<25#[0-9A-O]+%(\.[0-9A-O]+)=>/
-syn match   kuinNumber /\v<26#[0-9A-P]+%(\.[0-9A-P]+)=>/
-syn match   kuinNumber /\v<27#[0-9A-Q]+%(\.[0-9A-Q]+)=>/
-syn match   kuinNumber /\v<28#[0-9A-R]+%(\.[0-9A-R]+)=>/
-syn match   kuinNumber /\v<29#[0-9A-S]+%(\.[0-9A-S]+)=>/
-syn match   kuinNumber /\v<30#[0-9A-T]+%(\.[0-9A-T]+)=>/
-syn match   kuinNumber /\v<31#[0-9A-U]+%(\.[0-9A-U]+)=>/
-syn match   kuinNumber /\v<32#[0-9A-V]+%(\.[0-9A-V]+)=>/
-syn match   kuinNumber /\v<33#[0-9A-W]+%(\.[0-9A-W]+)=>/
-syn match   kuinNumber /\v<34#[0-9A-X]+%(\.[0-9A-X]+)=>/
-syn match   kuinNumber /\v<35#[0-9A-Y]+%(\.[0-9A-Y]+)=>/
-syn match   kuinNumber /\v<36#[0-9A-Z]+%(\.[0-9A-Z]+)=>/
+syn match   kuinNumber /\v<11#[0-9a]+%(\.[0-9a]+)=>/
+syn match   kuinNumber /\v<12#[0-9ab]+%(\.[0-9ab]+)=>/
+syn match   kuinNumber /\v<13#[0-9a-c]+%(\.[0-9a-c]+)=>/
+syn match   kuinNumber /\v<14#[0-9a-d]+%(\.[0-9a-d]+)=>/
+syn match   kuinNumber /\v<15#[0-9a-e]+%(\.[0-9a-e]+)=>/
+syn match   kuinNumber /\v<16#[0-9a-f]+%(\.[1-9a-f]+)=>/
+syn match   kuinNumber /\v<17#[0-9a-g]+%(\.[0-9a-g]+)=>/
+syn match   kuinNumber /\v<18#[0-9a-h]+%(\.[0-9a-h]+)=>/
+syn match   kuinNumber /\v<19#[0-9a-i]+%(\.[0-9a-i]+)=>/
+syn match   kuinNumber /\v<20#[0-9a-j]+%(\.[0-9a-j]+)=>/
+syn match   kuinNumber /\v<21#[0-9a-k]+%(\.[0-9a-k]+)=>/
+syn match   kuinNumber /\v<22#[0-9a-l]+%(\.[0-9a-l]+)=>/
+syn match   kuinNumber /\v<23#[0-9a-m]+%(\.[0-9a-m]+)=>/
+syn match   kuinNumber /\v<24#[0-9a-n]+%(\.[0-9a-n]+)=>/
+syn match   kuinNumber /\v<25#[0-9a-o]+%(\.[0-9a-o]+)=>/
+syn match   kuinNumber /\v<26#[0-9a-p]+%(\.[0-9a-p]+)=>/
+syn match   kuinNumber /\v<27#[0-9a-q]+%(\.[0-9a-q]+)=>/
+syn match   kuinNumber /\v<28#[0-9a-r]+%(\.[0-9a-r]+)=>/
+syn match   kuinNumber /\v<29#[0-9a-s]+%(\.[0-9a-s]+)=>/
+syn match   kuinNumber /\v<30#[0-9a-t]+%(\.[0-9a-t]+)=>/
+syn match   kuinNumber /\v<31#[0-9a-u]+%(\.[0-9a-u]+)=>/
+syn match   kuinNumber /\v<32#[0-9a-v]+%(\.[0-9a-v]+)=>/
+syn match   kuinNumber /\v<33#[0-9a-w]+%(\.[0-9a-w]+)=>/
+syn match   kuinNumber /\v<34#[0-9a-x]+%(\.[0-9a-x]+)=>/
+syn match   kuinNumber /\v<35#[0-9a-y]+%(\.[0-9a-y]+)=>/
+syn match   kuinNumber /\v<36#[0-9a-z]+%(\.[0-9a-z]+)=>/
 " }}}2 
 syn keyword kuinBoolean true false
 syn match   kuinFloat  /\v<[1-9]\d*%(\.\d+)=e[+-]=[1-9]\d*>/  " 314159e-5
@@ -135,8 +131,7 @@ syn match   kuinError      "\v%(var\s+\w+\s*\:\s*%(\[\])*\w+)@<=\s*\:\:.*" " ::
 syn match   kuinOperator   "\v\s*\:\:" contained " ::
 syn match   kuinClassError "\v%(var\s+\w+\s*\:\s*%(\[\])*\w+)@<=\s*\:\:.*" contained
 syn match   kuinOperator /\v\@%(is|nis|in|nin|to|swap)>/ " @ operators
-syn match   kuinOperator "?"
-syn match   kuinError    /\v\?\(@!/     " '(' always comes after '?'
+syn match   kuinOperator "?("
 syn match   kuinOperator /\v\=/
 syn match   kuinError    /\v\={2,}/     " Use =    instead of ==
 syn match   kuinError    /;/
@@ -161,8 +156,7 @@ syn region  kuinBlock
             \ contains=ALLBUT,kuinClassError
 " }}}1
 " *PreProc {{{1
-syn keyword kuinInclude import
-syn keyword kuinPreCondit debug release
+syn keyword kuinPreCondit dbg rls
 syn region  kuinBlock
             \ matchgroup=kuinPreCondit
             \ start=/\v%(^\s*)@<=<ifdef>/
@@ -217,7 +211,6 @@ hi def link kuinOperator        Operator
 hi def link kuinKeyword         Keyword
 hi def link kuinException       Exception
 " *PreProc
-hi def link kuinInclude         Include
 hi def link kuinPreCondit       PreCondit
 " *Type
 hi def link kuinType            Type
