@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/07/25 00:14:20.
+" Last Modified:2013/08/04 09:27:05.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -86,23 +86,20 @@ syn match   kuinFloat  /\v<0.\d+e[+-]=[1-9]\d*>/ " 0.1e+6
 " }}}1
 " *Identifier {{{1
 syn match   kuinIdentifier /\<\h\w*\>/ transparent
-syn keyword kuinFunction Init Main
-"syn keyword kuinNamespace Kuin D3D
-syn match   kuinFunction "\v<%(Kuin\@)@<=Dbg>"
+syn keyword kuinKeyword this
+syn keyword kuinFunction Init Main Free Err
+syn keyword kuinNamespace Kuin Dbg File Rnd Lib SaveData Draw Snd Input BGM
 syn match   kuinFunction "\v<%(Kuin\@)@<=Stop>"
 syn match   kuinFunction "\v<%(Kuin\@)@<=Act>"
-syn match   kuinFunction "\v<%(D3D\@)@<=Clear>"
-syn match   kuinFunction "\v<%(D3D\@)@<=DrawRect>"
-syn match   kuinFunction "\v<%(D3D\@)@<=Flip>"
-syn keyword kuinFunction ToStr Len Copy
-syn keyword kuinFunction Ctor Dtor
+"syn keyword kuinFunction ToStr Len Copy
+"syn keyword kuinFunction Ctor Dtor
 " }}}1
 " *Statement {{{1
-syn keyword kuinStatement skip var break return continue assert
+syn keyword kuinStatement skip err var break return continue assert
 syn keyword kuinDoStatement do
 syn region  kuinBlock
             \ matchgroup=kuinStatement
-            \ start=/\v%(^\s*[+-]?\s*\*?\s*)@<=<func>/
+            \ start=/\v%(^\s*\-?\s*\+?\s*)@<=<func>/
             \ end=/\v%(^\s*)@<=<end\s+func>/
             \ fold
             \ contains=ALLBUT,kuinClassError
@@ -128,10 +125,19 @@ syn region  kuinBlock
             \ contains=ALLBUT,kuinClassError
 syn keyword kuinLabel case default
 syn match   kuinError      "\v%(var\s+\w+\s*\:\s*%(\[\])*\w+)@<=\s*\:\:.*" " ::
-syn match   kuinOperator   "\v\s*\:\:" contained " ::
+syn match   kuinOperator   "\v\s*\:%(\:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
+syn match   kuinOperator   "\~" contained
+syn match   kuinOperator   "=&" contained
+syn match   kuinOperator   "+" contained
+syn match   kuinOperator   "-" contained
+syn match   kuinOperator   "*" contained
+syn match   kuinOperator   "/" contained
+syn match   kuinOperator   "%" contained
+syn match   kuinOperator   "^" contained
+syn match   kuinOperator   "!" contained
 syn match   kuinClassError "\v%(var\s+\w+\s*\:\s*%(\[\])*\w+)@<=\s*\:\:.*" contained
-syn match   kuinOperator /\v\@%(is|nis|in|nin|to|swap)>/ " @ operators
 syn match   kuinOperator "?("
+syn match   kuinOperator "#"
 syn match   kuinOperator /\v\=/
 syn match   kuinError    /\v\={2,}/     " Use =    instead of ==
 syn match   kuinError    /;/
@@ -167,7 +173,7 @@ syn region  kuinBlock
 " *Type {{{1
 syn keyword kuinType int float char bool complex money ratio list stack queue dict
 syn match   kuinType "\v%(^\s*[+-]?\s*\*?\s*)@<!<func>"
-syn keyword kuinType byte8 byte16 byte32 byte64 sbyte8 sbyte16 sbyte32 sbyte64
+syn keyword kuinType byte8 byte16 byte32 byte64
 syn keyword kuinStorageClass const
 syn region  kuinBlock
             \ matchgroup=kuinStructure
