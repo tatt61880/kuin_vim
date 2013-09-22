@@ -1,13 +1,13 @@
 " Vim filetype plugin
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2012/09/30 15:45:24.
+" Last Modified:2013/09/22 15:25:54.
 "
 " == Usage ==
 " Put this file into "ftplugin" folder.
 
 setlocal autoindent
-setlocal expandtab
+setlocal noexpandtab
 setlocal tabstop<
 setlocal softtabstop=4
 setlocal shiftwidth=4

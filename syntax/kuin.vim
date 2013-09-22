@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/08/04 09:27:05.
+" Last Modified:2013/09/22 15:27:01.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -95,7 +95,7 @@ syn match   kuinFunction "\v<%(Kuin\@)@<=Act>"
 "syn keyword kuinFunction Ctor Dtor
 " }}}1
 " *Statement {{{1
-syn keyword kuinStatement skip err var break return continue assert
+syn keyword kuinStatement skip var break return continue assert
 syn keyword kuinDoStatement do
 syn region  kuinBlock
             \ matchgroup=kuinStatement
@@ -187,7 +187,6 @@ syn region  kuinBlock
             \ end=/\v%(^\s*)@<=<end\s+class>/
             \ fold
             \ contains=ALLBUT,kuinDoStatement
-syn keyword kuinTypedef alias
 " }}}1
 " *Todo {{{1
 syn keyword kuinTodo contained TODO FIXME XXX
@@ -222,7 +221,6 @@ hi def link kuinPreCondit       PreCondit
 hi def link kuinType            Type
 hi def link kuinStorageClass    StorageClass
 hi def link kuinStructure       Structure
-hi def link kuinTypedef         Typedef
 " *Special
 hi def link kuinSpecial         Special
 " *Error
