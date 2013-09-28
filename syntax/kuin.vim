@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/09/22 15:27:01.
+" Last Modified:2013/09/28 19:41:34.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -171,8 +171,8 @@ syn region  kuinBlock
             \ contains=ALLBUT,kuinClassError
 " }}}1
 " *Type {{{1
-syn keyword kuinType int float char bool complex money ratio list stack queue dict
-syn match   kuinType "\v%(^\s*[+-]?\s*\*?\s*)@<!<func>"
+syn keyword kuinType int float char bool list stack queue dict
+syn match   kuinType "\v%(^\s*\-?\s*\+?\s*)@<!<func>"
 syn keyword kuinType byte8 byte16 byte32 byte64
 syn keyword kuinStorageClass const
 syn region  kuinBlock
