@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/09/28 19:41:34.
+" Last Modified:2013/09/30 00:27:31.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -88,7 +88,7 @@ syn match   kuinFloat  /\v<0.\d+e[+-]=[1-9]\d*>/ " 0.1e+6
 syn match   kuinIdentifier /\<\h\w*\>/ transparent
 syn keyword kuinKeyword this
 syn keyword kuinFunction Init Main Free Err
-syn keyword kuinNamespace Kuin Dbg File Rnd Lib SaveData Draw Snd Input BGM
+"syn keyword kuinNamespace Kuin Dbg File Rnd Lib SaveData Draw Snd Input BGM
 syn match   kuinFunction "\v<%(Kuin\@)@<=Stop>"
 syn match   kuinFunction "\v<%(Kuin\@)@<=Act>"
 "syn keyword kuinFunction ToStr Len Copy
