@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/09/30 00:27:31.
+" Last Modified:2013/11/01 16:55:36.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -17,7 +17,7 @@ set suffixesadd=.kn
 
 syntax case match
 
-syn match   kuinDoLessError /\v%(^\s*)@<=\w.*/ " for forgetting 'do'
+syn match   kuinDoLessError /\v%(^\s*)@<=\w+/ " for forgetting 'do'
 syn match   kuinSpecial /#/
 syn match   kuinSpecial /@/
 
@@ -86,7 +86,7 @@ syn match   kuinFloat  /\v<0.\d+e[+-]=[1-9]\d*>/ " 0.1e+6
 " }}}1
 " *Identifier {{{1
 syn match   kuinIdentifier /\<\h\w*\>/ transparent
-syn keyword kuinKeyword this
+syn match   kuinKeyword    /\v%(^\s*)@<!this>/
 syn keyword kuinFunction Init Main Free Err
 "syn keyword kuinNamespace Kuin Dbg File Rnd Lib SaveData Draw Snd Input BGM
 syn match   kuinFunction "\v<%(Kuin\@)@<=Stop>"
@@ -109,7 +109,6 @@ syn region  kuinBlock
             \ end=/\v%(^\s*)@<=<end\s+block>/
             \ fold
             \ contains=ALLBUT,kuinClassError
-syn match   kuinStatement "@new\>"
 syn keyword kuinConditional else elif
 syn region  kuinBlock
             \ matchgroup=kuinConditional
@@ -136,12 +135,14 @@ syn match   kuinOperator   "%" contained
 syn match   kuinOperator   "^" contained
 syn match   kuinOperator   "!" contained
 syn match   kuinClassError "\v%(var\s+\w+\s*\:\s*%(\[\])*\w+)@<=\s*\:\:.*" contained
-syn match   kuinOperator "?("
+syn match   kuinError    "?"
+syn match   kuinOperator "\v\?%(\()@="
 syn match   kuinOperator "#"
 syn match   kuinOperator /\v\=/
 syn match   kuinError    /\v\={2,}/     " Use =    instead of ==
 syn match   kuinError    /;/
-syn match   kuinError    /\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/  " [do VName =] isn't correct sentence.
+syn match   kuinError    /\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\:\s+/  " [do VName : ] isn't correct sentence.
+syn match   kuinError    /\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/  " [do VName = ] isn't correct sentence.
 syn match   kuinError    /\v%(<var\s+\w+\s*\:\s*%(\[\])*\w+\s*)@<=\=/  " [var VName : Type =] isn't correct sentence.
 syn match   kuinOperator /\v\<\>/
 syn match   kuinError    /\v!\=/        " Use <>   instead of !=
