@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/11/01 17:22:25.
+" Last Modified:2013/11/04 09:32:35.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -9,11 +9,6 @@
 if exists("b:current_syntax")
     finish
 endif
-
-"set foldmethod=syntax
-
-" suffixesadd is for "gf" command.
-set suffixesadd=.kn
 
 syntax case match
 
