@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2013/11/04 09:32:35.
+" Last Modified:2014/02/09 07:35:55.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -12,7 +12,7 @@ endif
 
 syntax case match
 
-syn match   kuinDoLessError /\v%(^\s*)@<=\w+/ " for forgetting 'do'
+syn match   kuinDoLessError /\v%(^\s*)@<=\S+/ " for forgetting 'do'
 syn match   kuinSpecial /#/
 syn match   kuinSpecial /@/
 
@@ -118,8 +118,8 @@ syn region  kuinBlock
             \ fold
             \ contains=ALLBUT,kuinClassError
 syn keyword kuinLabel case default
-syn match   kuinError      "\v%(var\s+\w+\s*\:\s*%(\[\])*\w+)@<=\s*\:\:.*" " ::
-syn match   kuinOperator   "\v\s*\:%(\:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
+syn match   kuinError      "\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" " In global scope, [var VName: type ::] is not arrowed.
+syn match   kuinOperator   "\v\s*:%(:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
 syn match   kuinOperator   "\~" contained
 syn match   kuinOperator   "=&" contained
 syn match   kuinOperator   "+" contained
@@ -127,18 +127,20 @@ syn match   kuinOperator   "-" contained
 syn match   kuinOperator   "*" contained
 syn match   kuinOperator   "/" contained
 syn match   kuinOperator   "%" contained
-syn match   kuinOperator   "^" contained
+syn match   kuinOperator   "\^" contained
 syn match   kuinOperator   "!" contained
-syn match   kuinClassError "\v%(var\s+\w+\s*\:\s*%(\[\])*\w+)@<=\s*\:\:.*" contained
-syn match   kuinError    "?"
+syn match   kuinClassError "\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" contained " In global scope, [var VName: type ::] is not arrowed.
 syn match   kuinOperator "\v\?%(\()@="
+syn match   kuinError    /\v%(\?)@<=\s+%(\()@=/ contained " [? ( is not arrowed. It should be ?(]
 syn match   kuinOperator "#"
 syn match   kuinOperator /\v\=/
 syn match   kuinError    /\v\={2,}/     " Use =    instead of ==
 syn match   kuinError    /;/
-syn match   kuinError    /\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\:\s+/  " [do VName : ] isn't correct sentence.
-syn match   kuinError    /\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/  " [do VName = ] isn't correct sentence.
-syn match   kuinError    /\v%(<var\s+\w+\s*\:\s*%(\[\])*\w+\s*)@<=\=/  " [var VName : Type =] isn't correct sentence.
+syn match   kuinError    /\v%(<do\s+\w+%(\[\d+\])*\s*:)@<=\s+/  " [do VName : ] isn't correct sentence.
+syn match   kuinError    /\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/  " [do VName =] isn't correct sentence.
+syn match   kuinError    /\v%(<var\s+\w+\s*:\s*%(\[\])*\w+\s*)@<=\=/  " [var VName : Type =] isn't correct sentence.
+syn match   kuinError    /\v%(<var\s+\w+\s*)@<=::/  " [var VName ::] isn't correct sentence.
+syn match   kuinError    /\v%(:)@<=\s+%(:)@=/  " [: :] isn't arrowed.
 syn match   kuinOperator /\v\<\>/
 syn match   kuinError    /\v!\=/        " Use <>   instead of !=
 syn match   kuinOperator /\v\&/
@@ -148,7 +150,10 @@ syn match   kuinError    /\v\|{2,}/     " Use |    instead of ||
 syn match   kuinError    /\v\+{2,}/     " Use :+ 1 instead of ++
 syn match   kuinError    /\v\-{2,}/     " Use :- 1 instead of --
 syn match   kuinOperator /\v(\<|\>)\=?/ " <, >, <=, >=
+syn match   kuinError    /\v%([\>=])@<=\s+%(\&)@=/ contained " [<> & is not arrowed. It should be <>&]
+syn match   kuinError    /\v%(\<)@<=\s+%(\>)@=/ contained " [< > is not arrowed. It should be <>]
 syn match   kuinOperator /\v\$/         " $ (cast operator)
+syn match   kuinError    /\v%(^\s*)@<=[\~\=\*/%&\|\^0-9]/ contained " [Some kind of character '*' etc. doesn't come at line head.]
 syn keyword kuinException throw catch finally
 syn region  kuinBlock
             \ matchgroup=kuinException
@@ -186,7 +191,7 @@ syn region  kuinBlock
 " }}}1
 " *Todo {{{1
 syn keyword kuinTodo contained TODO FIXME XXX
-syn match   kuinTodo contained "\v\s@<=☆\s@="
+syn match   kuinTodo contained "\v%(\s|\{)@<=☆%(\s|\})@="
 " }}}1
 
 " def link {{{1
