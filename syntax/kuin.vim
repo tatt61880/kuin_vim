@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2014/02/09 07:35:55.
+" Last Modified:2014/02/09 19:28:13.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -12,7 +12,8 @@ endif
 
 syntax case match
 
-syn match   kuinDoLessError /\v%(^\s*)@<=\S+/ " for forgetting 'do'
+"処理重い...
+"syn match   kuinDoLessError /\v%(^\s*)@<=\S+/ " for forgetting 'do'
 syn match   kuinSpecial /#/
 syn match   kuinSpecial /@/
 
@@ -74,13 +75,14 @@ syn match   kuinNumber /\v<33#[0-9a-w]+%(\.[0-9a-w]+)=>/
 syn match   kuinNumber /\v<34#[0-9a-x]+%(\.[0-9a-x]+)=>/
 syn match   kuinNumber /\v<35#[0-9a-y]+%(\.[0-9a-y]+)=>/
 syn match   kuinNumber /\v<36#[0-9a-z]+%(\.[0-9a-z]+)=>/
-" }}}2 
+" }}}2
 syn keyword kuinBoolean true false
 syn match   kuinFloat  /\v<[1-9]\d*%(\.\d+)=e[+-]=[1-9]\d*>/  " 314159e-5
 syn match   kuinFloat  /\v<0.\d+e[+-]=[1-9]\d*>/ " 0.1e+6
 " }}}1
 " *Identifier {{{1
-syn match   kuinIdentifier /\<\h\w*\>/ transparent
+" kuinIdentifierは不要？
+"syn match   kuinIdentifier /\<\h\w*\>/ transparent
 syn match   kuinKeyword    /\v%(^\s*)@<!<this>/
 syn keyword kuinFunction Init Main Free Err
 "syn keyword kuinNamespace Kuin Dbg File Rnd Lib SaveData Draw Snd Input BGM
@@ -153,7 +155,8 @@ syn match   kuinOperator /\v(\<|\>)\=?/ " <, >, <=, >=
 syn match   kuinError    /\v%([\>=])@<=\s+%(\&)@=/ contained " [<> & is not arrowed. It should be <>&]
 syn match   kuinError    /\v%(\<)@<=\s+%(\>)@=/ contained " [< > is not arrowed. It should be <>]
 syn match   kuinOperator /\v\$/         " $ (cast operator)
-syn match   kuinError    /\v%(^\s*)@<=[\~\=\*/%&\|\^0-9]/ contained " [Some kind of character '*' etc. doesn't come at line head.]
+"処理重い...
+"syn match   kuinError    /\v%(^\s*)@<=[<>\~\=\*/%&\|\^0-9]/ contained " [Some kind of character '*' etc. doesn't come at line head.]
 syn keyword kuinException throw catch finally
 syn region  kuinBlock
             \ matchgroup=kuinException
