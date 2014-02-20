@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2014/02/20 22:13:51.
+" Last Modified:2014/02/20 22:23:45.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -81,7 +81,7 @@ syn keyword	kuinBoolean	true false
 " *Identifier {{{1
 " kuinIdentifierは不要？
 "syn match	kuinIdentifier	/\<\h\w*\>/ transparent
-syn match	kuinKeyword		/\v%(^\s*)@<!<this>/
+syn match	kuinKeyword		/\v%(^\s*)@<!<me>/
 syn keyword	kuinFunction	Init Main Free Err
 "syn keyword	kuinNamespace	Kuin Dbg File Rnd Lib SaveData Draw Snd Input BGM
 syn match	kuinFunction	"\v<%(Kuin\@)@<=Stop>"
