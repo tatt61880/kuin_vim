@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2014/02/20 22:23:45.
+" Last Modified:2014/02/22 10:40:50.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -18,19 +18,17 @@ syn match	kuinSpecial	/#/
 syn match	kuinSpecial	/@/
 
 " *Comment {{{1
-syn region	kuinBlockCommen_t
+syn region	kuinBlockCommen_t contains=kuinBlockCommen_t,kuinString,kuinCharacter,kuinTodo
 			\ start='{'
 			\ end='}'
 			\ fold
-			\ contains=kuinBlockCommen_t,kuinString,kuinCharacter,kuinTodo
 " }}}1
 " *Constant {{{1
 syn keyword	kuinConstant null inf
-syn region	kuinString
+syn region	kuinString contains=kuinCharacterError
 			\ start=/"/
 			\ end=/"\|$/
 			\ skip=/\v%(\\)@<!%(\\\\)*\\"/
-			\ contains=kuinCharacterError
 syn match	kuinCharacter	/'[^\']'/
 syn match	kuinCharacter	/'\\.'/	contains=kuinCharacterError
 syn match	kuinCharacterError	/\v%(%(\\)@<!\\%(\\\\)*)@<!\\0/	contained " \0 isn't arrowed
@@ -92,31 +90,27 @@ syn match	kuinFunction	"\v<%(Kuin\@)@<=Act>"
 " *Statement {{{1
 syn keyword	kuinStatement	skip var break return continue assert
 syn keyword	kuinDoStatement	do
-syn region	kuinBlock
+syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinStatement
 			\ start=/\v%(^\s*\-?\s*\+?\s*)@<=<func>/
 			\ end=/\v%(^\s*)@<=<end\s+func>/
 			\ fold
-			\ contains=ALLBUT,kuinClassError
-syn region	kuinBlock
+syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinStatement
 			\ start=/\v%(^\s*)@<=<block>/
 			\ end=/\v%(^\s*)@<=<end\s+block>/
 			\ fold
-			\ contains=ALLBUT,kuinClassError
 syn keyword	kuinConditional else elif
-syn region	kuinBlock
+syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinConditional
 			\ start=/\v%(^\s*)@<=<\z(if|switch)>/
 			\ end=/\v%(^\s*)@<=<end\s+\z1>/
 			\ fold
-			\ contains=ALLBUT,kuinClassError
-syn region	kuinBlock
+syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinRepeat
 			\ start=/\v%(^\s*)@<=<\z(while|for|foreach)>/
-				\ end=/\v%(^\s*)@<=<end\s+\z1>/
-				\ fold
-				\ contains=ALLBUT,kuinClassError
+			\ end=/\v%(^\s*)@<=<end\s+\z1>/
+			\ fold
 syn keyword	kuinLabel case default
 syn match	kuinError		"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" " In global scope, [var VName: type ::] is not arrowed.
 syn match	kuinOperator	"\v\s*:%(:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
@@ -140,7 +134,7 @@ syn match	kuinError		/\v%(<do\s+\w+%(\[\d+\])*\s*:)@<=\s+/	" [do VName : ] isn't
 syn match	kuinError		/\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/		" [do VName =] isn't correct sentence.
 syn match	kuinError		/\v%(<var\s+\w+\s*:\s*%(\[\])*\w+\s*)@<=\=/	" [var VName : Type =] isn't correct sentence.
 syn match	kuinError		/\v%(<var\s+\w+\s*)@<=::/	" [var VName ::] isn't correct sentence.
-syn match	kuinError		/\v%(:)@<=\s+%(:)@=/	" [: :] isn't arrowed.
+"syn match	kuinError		/\v%(:)@<=\s+%(:)@=/	" [: :] isn't arrowed.
 syn match	kuinOperator	/\v\<\>/
 syn match	kuinError		/\v!\=/			" Use <>   instead of !=
 syn match	kuinOperator	/\v\&/
@@ -156,39 +150,35 @@ syn match	kuinOperator	/\v\$/			" $ (cast operator)
 "処理重い...
 "syn match	kuinError	/\v%(^\s*)@<=[<>\~\=\*/%&\|\^0-9]/	contained " [Some kind of character '*' etc. doesn't come at line head.]
 syn keyword	kuinException throw catch finally
-syn region	kuinBlock
+syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinException
 			\ start=/\v%(^\s*)@<=<try>/
 			\ end=/\v%(^\s*)@<=<end\s+try>/
 			\ fold
-			\ contains=ALLBUT,kuinClassError
 " }}}1
 " *PreProc {{{1
 syn keyword	kuinPreCondit dbg rls
-syn region	kuinBlock
+syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinPreCondit
 			\ start=/\v%(^\s*)@<=<ifdef>/
 			\ end=/\v%(^\s*)@<=<end\s+ifdef>/
 			\ fold
-			\ contains=ALLBUT,kuinClassError
 " }}}1
 " *Type {{{1
 syn keyword	kuinType	int float char bool list stack queue dict
 syn match	kuinType	"\v%(^\s*\-?\s*\+?\s*)@<!<func>"
 syn keyword	kuinType	byte8 byte16 byte32 byte64
 syn keyword	kuinStorageClass	const
-syn region	kuinBlock
+syn region	kuinBlock contains=ALLBUT,kuinDoLessError
 			\ matchgroup=kuinStructure
 			\ start=/\v%(^\s*-?\s*)@<=<enum>/
 			\ end=/\v%(^\s*)@<=<end\s+enum>/
 			\ fold
-			\ contains=ALLBUT,kuinDoLessError
-syn region  kuinBlock
+syn region  kuinBlock contains=ALLBUT,kuinDoStatement
 			\ matchgroup=kuinStructure
 			\ start=/\v%(^\s*-?\s*)@<=<class>/
 			\ end=/\v%(^\s*)@<=<end\s+class>/
 			\ fold
-			\ contains=ALLBUT,kuinDoStatement
 " }}}1
 " *Todo {{{1
 syn keyword	kuinTodo contained TODO FIXME XXX
