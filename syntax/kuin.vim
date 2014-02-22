@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2014/02/22 10:40:50.
+" Last Modified:2014/02/23 01:41:38.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -18,7 +18,7 @@ syn match	kuinSpecial	/#/
 syn match	kuinSpecial	/@/
 
 " *Comment {{{1
-syn region	kuinBlockCommen_t contains=kuinBlockCommen_t,kuinString,kuinCharacter,kuinTodo
+syn region	kuinBlockComment contains=kuinBlockComment,kuinString,kuinCharacter,kuinTodo
 			\ start='{'
 			\ end='}'
 			\ fold
@@ -112,7 +112,7 @@ syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ end=/\v%(^\s*)@<=<end\s+\z1>/
 			\ fold
 syn keyword	kuinLabel case default
-syn match	kuinError		"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" " In global scope, [var VName: type ::] is not arrowed.
+syn match	kuinError		"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" " In global scope, [var VName: type ::] isn't arrowed.
 syn match	kuinOperator	"\v\s*:%(:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
 syn match	kuinOperator	"\~"	contained
 syn match	kuinOperator	"=&"	contained
@@ -123,7 +123,7 @@ syn match	kuinOperator	"/"		contained
 syn match	kuinOperator	"%"		contained
 syn match	kuinOperator	"\^"	contained
 syn match	kuinOperator	"!"		contained
-syn match	kuinClassError	"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" contained " In global scope, [var VName: type ::] is not arrowed.
+syn match	kuinClassError	"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" contained " In global scope, [var VName: type ::] isn't arrowed.
 syn match	kuinOperator	"\v\?%(\()@="
 syn match	kuinError		/\v%(\?)@<=\s+%(\()@=/ contained " [? ( is not arrowed. It should be ?(]
 syn match	kuinOperator	"#"
@@ -187,7 +187,7 @@ syn match	kuinTodo contained "\v%(\s|\{)@<=☆%(\s|\})@="
 
 " def link {{{1
 " *Comment
-hi def link kuinBlockCommen_t	Comment
+hi def link kuinBlockComment	Comment
 " *Constant
 hi def link kuinConstant		Constant
 hi def link kuinString			String
