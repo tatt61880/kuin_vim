@@ -1,0 +1,74 @@
+## snippets for Kuin.
+#  @tatt61880
+#  Last Modified: 2012/09/30 00:48:01.
+
+snippet     block
+abbr        block (...) end block
+    block ${1:a}
+        ${0}
+    end block
+
+snippet     class
+abbr        class (...) end class
+    class ${1:ClassName}(${2:CParent})
+        ${0}
+    end class
+
+snippet     enum
+abbr        enum (...) end enum
+    enum ${1:EName}
+        ${0}
+    end enum
+
+snippet     for
+abbr        for i(...) end for
+    for ${1:i}(${2:0}, ${3:10})
+        ${0}
+    end for
+
+snippet     foreach
+abbr        foreach (...) end foreach
+    foreach ${1:item}(${2:items})
+        ${0}
+    end foreach
+
+snippet     func
+abbr        func (...) end func
+    func ${1:FuncName}(${2:arguments})${3: : int}
+        ${0}
+    end func
+
+snippet     if
+abbr        if (...) end if
+    if (${1:true})
+        ${0}
+    end if
+
+snippet     ifdef
+abbr        ifdef (...) end ifdef
+    ifdef (${1:debug})
+        ${0}
+    end ifdef
+
+snippet     switch
+abbr        switch (...) end switch
+    switch ${1:s}(${2:n})
+    case (${3:0})
+        ${0}
+    default
+    end switch
+
+snippet     try
+abbr        try (...) end try
+    try ${1:e}
+    catch (${2:0})
+        ${0}
+    finally
+    end try
+
+snippet     while
+abbr        while (...) end while
+    while (${1:true})
+        ${0}
+    end while
+
