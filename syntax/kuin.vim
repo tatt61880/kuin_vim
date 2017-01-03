@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/01/04 05:21:56.
+" Last Modified:2017/01/04 05:34:54.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -31,7 +31,7 @@ syn region	kuinString contains=kuinCharacterError
 			\ skip=/\v%(\\)@<!%(\\\\)*\\"/
 syn match	kuinCharacter	/'[^\']'/
 syn match	kuinCharacter	/'\\.'/	contains=kuinCharacterError
-syn match	kuinCharacterError	/\v%(%(\\)@<!\\%(\\\\)*)@<!\\0/	contained " \0 isn't arrowed
+"syn match	kuinCharacterError	/\v%(%(\\)@<!\\%(\\\\)*)@<!\\0/	contained " \0 isn't arrowed
 
 " kuinNumber {{{2
 syn match	kuinError	/\v<\d\w+>/		" e.g. 1000_000 => Error, 100yen => Error
@@ -42,7 +42,7 @@ syn match	kuinError	/\v<10#/		" e.g.  10#9999 => Error
 syn match	kuinError	/\v<\d+#\w+>/	" e.g. 100#FFFF => Error, 8#8888 => Error
 syn match	kuinNumber	/\v<2#[0-1]+%(\.[0-1]+)=>/
 syn match	kuinNumber	/\v<8#[0-7]+%(\.[0-7]+)=>/
-syn match	kuinNumber	/\v<36#[0-9a-z]+%(\.[0-9a-z]+)=>/
+syn match	kuinNumber	/\v<16#[0-9A-F]+%(\.[1-9A-F]+)=>/
 " }}}2
 syn keyword	kuinBoolean	true false
 " }}}1
@@ -87,6 +87,7 @@ syn match	kuinError		"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" " In globa
 syn match	kuinOperator	"\v\s*\:%(:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
 syn match	kuinOperator	"\~"	contained
 syn match	kuinOperator	"=&"	contained
+syn match	kuinOperator	"=$"	contained
 syn match	kuinOperator	"+"		contained
 syn match	kuinOperator	"-"		contained
 syn match	kuinOperator	"*"		contained
