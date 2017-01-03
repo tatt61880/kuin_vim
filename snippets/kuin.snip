@@ -1,6 +1,6 @@
 ## snippets for Kuin.
 #  @tatt61880
-#  Last Modified: 2012/09/30 00:48:01.
+#  Last Modified: 2016/12/11 13:31:21.
 
 snippet     block
 abbr        block (...) end block
@@ -40,20 +40,20 @@ abbr        func (...) end func
 
 snippet     if
 abbr        if (...) end if
-    if (${1:true})
+    if(${1:true})
         ${0}
     end if
 
 snippet     ifdef
 abbr        ifdef (...) end ifdef
-    ifdef (${1:debug})
+    ifdef(${1:debug})
         ${0}
     end ifdef
 
 snippet     switch
 abbr        switch (...) end switch
     switch ${1:s}(${2:n})
-    case (${3:0})
+    case ${3:0}
         ${0}
     default
     end switch
@@ -61,7 +61,7 @@ abbr        switch (...) end switch
 snippet     try
 abbr        try (...) end try
     try ${1:e}
-    catch (${2:0})
+    catch ${2:0}
         ${0}
     finally
     end try

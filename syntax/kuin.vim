@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2014/12/28 20:31:25.
+" Last Modified:2017/01/04 05:21:56.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -35,43 +35,13 @@ syn match	kuinCharacterError	/\v%(%(\\)@<!\\%(\\\\)*)@<!\\0/	contained " \0 isn'
 
 " kuinNumber {{{2
 syn match	kuinError	/\v<\d\w+>/		" e.g. 1000_000 => Error, 100yen => Error
+syn match	kuinNumber	/\v<\d+b%(8|16|32|64)>/
 syn match	kuinNumber	/\v<0%(\.\d+)=>/
 syn match	kuinNumber	/\v<[1-9]\d*%(\.\d+)=>/
 syn match	kuinError	/\v<10#/		" e.g.  10#9999 => Error
 syn match	kuinError	/\v<\d+#\w+>/	" e.g. 100#FFFF => Error, 8#8888 => Error
 syn match	kuinNumber	/\v<2#[0-1]+%(\.[0-1]+)=>/
-syn match	kuinNumber	/\v<3#[0-2]+%(\.[0-2]+)=>/
-syn match	kuinNumber	/\v<4#[0-3]+%(\.[0-3]+)=>/
-syn match	kuinNumber	/\v<5#[0-4]+%(\.[0-4]+)=>/
-syn match	kuinNumber	/\v<6#[0-5]+%(\.[0-5]+)=>/
-syn match	kuinNumber	/\v<7#[0-6]+%(\.[0-6]+)=>/
 syn match	kuinNumber	/\v<8#[0-7]+%(\.[0-7]+)=>/
-syn match	kuinNumber	/\v<9#[0-8]+%(\.[0-8]+)=>/
-syn match	kuinNumber	/\v<11#[0-9a]+%(\.[0-9a]+)=>/
-syn match	kuinNumber	/\v<12#[0-9ab]+%(\.[0-9ab]+)=>/
-syn match	kuinNumber	/\v<13#[0-9a-c]+%(\.[0-9a-c]+)=>/
-syn match	kuinNumber	/\v<14#[0-9a-d]+%(\.[0-9a-d]+)=>/
-syn match	kuinNumber	/\v<15#[0-9a-e]+%(\.[0-9a-e]+)=>/
-syn match	kuinNumber	/\v<16#[0-9a-f]+%(\.[1-9a-f]+)=>/
-syn match	kuinNumber	/\v<17#[0-9a-g]+%(\.[0-9a-g]+)=>/
-syn match	kuinNumber	/\v<18#[0-9a-h]+%(\.[0-9a-h]+)=>/
-syn match	kuinNumber	/\v<19#[0-9a-i]+%(\.[0-9a-i]+)=>/
-syn match	kuinNumber	/\v<20#[0-9a-j]+%(\.[0-9a-j]+)=>/
-syn match	kuinNumber	/\v<21#[0-9a-k]+%(\.[0-9a-k]+)=>/
-syn match	kuinNumber	/\v<22#[0-9a-l]+%(\.[0-9a-l]+)=>/
-syn match	kuinNumber	/\v<23#[0-9a-m]+%(\.[0-9a-m]+)=>/
-syn match	kuinNumber	/\v<24#[0-9a-n]+%(\.[0-9a-n]+)=>/
-syn match	kuinNumber	/\v<25#[0-9a-o]+%(\.[0-9a-o]+)=>/
-syn match	kuinNumber	/\v<26#[0-9a-p]+%(\.[0-9a-p]+)=>/
-syn match	kuinNumber	/\v<27#[0-9a-q]+%(\.[0-9a-q]+)=>/
-syn match	kuinNumber	/\v<28#[0-9a-r]+%(\.[0-9a-r]+)=>/
-syn match	kuinNumber	/\v<29#[0-9a-s]+%(\.[0-9a-s]+)=>/
-syn match	kuinNumber	/\v<30#[0-9a-t]+%(\.[0-9a-t]+)=>/
-syn match	kuinNumber	/\v<31#[0-9a-u]+%(\.[0-9a-u]+)=>/
-syn match	kuinNumber	/\v<32#[0-9a-v]+%(\.[0-9a-v]+)=>/
-syn match	kuinNumber	/\v<33#[0-9a-w]+%(\.[0-9a-w]+)=>/
-syn match	kuinNumber	/\v<34#[0-9a-x]+%(\.[0-9a-x]+)=>/
-syn match	kuinNumber	/\v<35#[0-9a-y]+%(\.[0-9a-y]+)=>/
 syn match	kuinNumber	/\v<36#[0-9a-z]+%(\.[0-9a-z]+)=>/
 " }}}2
 syn keyword	kuinBoolean	true false
@@ -80,15 +50,16 @@ syn keyword	kuinBoolean	true false
 " kuinIdentifierは不要？
 "syn match	kuinIdentifier	/\<\h\w*\>/ transparent
 syn match	kuinKeyword		/\v%(^\s*)@<!<me>/
-syn keyword	kuinFunction	Init Main Free Err
-"syn keyword	kuinNamespace	Kuin Dbg File Rnd Lib SaveData Draw Snd Input BGM
-syn match	kuinFunction	"\v<%(Kuin\@)@<=Stop>"
-syn match	kuinFunction	"\v<%(Kuin\@)@<=Act>"
+syn keyword	kuinFunction	main
+"syn keyword	kuinFunction	init main
+"syn keyword	kuinNamespace	kuin cui lib
+"syn match	kuinFunction	"\v<%(kuin\@)@<=stop>"
+"syn match	kuinFunction	"\v<%(kuin\@)@<=act>"
 "syn keyword	kuinFunction	ToStr Len Copy
 "syn keyword	kuinFunction	Ctor Dtor
 " }}}1
 " *Statement {{{1
-syn keyword	kuinStatement	skip var break return continue assert
+syn keyword	kuinStatement	skip var break ret assert
 syn keyword	kuinDoStatement	do
 syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinStatement
@@ -167,7 +138,7 @@ syn region	kuinBlock contains=ALLBUT,kuinClassError
 " *Type {{{1
 syn keyword	kuinType	int float char bool list stack queue dict
 syn match	kuinType	"\v%(^\s*\-?\s*\+?\s*)@<!<func>"
-syn keyword	kuinType	byte8 byte16 byte32 byte64
+syn keyword	kuinType	bit8 bit16 bit32 bit64
 syn keyword	kuinStorageClass	const
 syn region	kuinBlock contains=ALLBUT,kuinDoLessError
 			\ matchgroup=kuinStructure
