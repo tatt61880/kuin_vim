@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/01/04 05:34:54.
+" Last Modified:2017/01/04 05:40:14.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -86,8 +86,6 @@ syn keyword	kuinLabel case default
 syn match	kuinError		"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" " In global scope, [var VName: type ::] isn't arrowed.
 syn match	kuinOperator	"\v\s*\:%(:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
 syn match	kuinOperator	"\~"	contained
-syn match	kuinOperator	"=&"	contained
-syn match	kuinOperator	"=$"	contained
 syn match	kuinOperator	"+"		contained
 syn match	kuinOperator	"-"		contained
 syn match	kuinOperator	"*"		contained
