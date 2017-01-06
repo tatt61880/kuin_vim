@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/01/04 05:40:14.
+" Last Modified:2017/01/06 16:29:53.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -63,7 +63,7 @@ syn keyword	kuinStatement	skip var break ret assert
 syn keyword	kuinDoStatement	do
 syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinStatement
-			\ start=/\v%(^\s*\-?\s*\+?\s*)@<=<func>/
+			\ start=/\v%(^\s*\+?\s*\*?\s*)@<=<func>/
 			\ end=/\v%(^\s*)@<=<end\s+func>/
 			\ fold
 syn region	kuinBlock contains=ALLBUT,kuinClassError
@@ -136,7 +136,7 @@ syn region	kuinBlock contains=ALLBUT,kuinClassError
 " }}}1
 " *Type {{{1
 syn keyword	kuinType	int float char bool list stack queue dict
-syn match	kuinType	"\v%(^\s*\-?\s*\+?\s*)@<!<func>"
+syn match	kuinType	"\v%(^\s*\+?\s*\*?\s*)@<!<func>"
 syn keyword	kuinType	bit8 bit16 bit32 bit64
 syn keyword	kuinStorageClass	const
 syn region	kuinBlock contains=ALLBUT,kuinDoLessError
