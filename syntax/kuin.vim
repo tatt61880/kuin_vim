@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/01/06 16:29:53.
+" Last Modified:2017/01/08 23:18:57.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -40,9 +40,9 @@ syn match	kuinNumber	/\v<0%(\.\d+)=>/
 syn match	kuinNumber	/\v<[1-9]\d*%(\.\d+)=>/
 syn match	kuinError	/\v<10#/		" e.g.  10#9999 => Error
 syn match	kuinError	/\v<\d+#\w+>/	" e.g. 100#FFFF => Error, 8#8888 => Error
-syn match	kuinNumber	/\v<2#[0-1]+%(\.[0-1]+)=>/
-syn match	kuinNumber	/\v<8#[0-7]+%(\.[0-7]+)=>/
-syn match	kuinNumber	/\v<16#[0-9A-F]+%(\.[1-9A-F]+)=>/
+syn match	kuinNumber	/\v<2#[0-1]+%(%(\.[0-1]+)|%(b%(8|16|32|64)))=>/
+syn match	kuinNumber	/\v<8#[0-7]+%(%(\.[0-7]+)|%(b%(8|16|32|64)))=>/
+syn match	kuinNumber	/\v<16#[0-9A-F]+%(%(\.[0-9A-F]+)|%(b%(8|16|32|64)))=>/
 " }}}2
 syn keyword	kuinBoolean	true false
 " }}}1
