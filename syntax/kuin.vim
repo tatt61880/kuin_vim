@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/01/08 23:18:57.
+" Last Modified:2017/01/09 16:42:52.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -17,11 +17,13 @@ syntax case match
 syn match	kuinSpecial	/#/
 syn match	kuinSpecial	/@/
 
+syn match	kuinError		/;/
 " *Comment {{{1
-syn region	kuinBlockComment contains=kuinBlockComment,kuinString,kuinCharacter,kuinTodo
+syn region	kuinBlockComment contains=kuinBlockComment,kuinLineComment,kuinString,kuinCharacter,kuinTodo
 			\ start='{'
 			\ end='}'
 			\ fold
+syn match	kuinLineComment /\v^\s*;.*/
 " }}}1
 " *Constant {{{1
 syn keyword	kuinConstant null inf
@@ -31,7 +33,7 @@ syn region	kuinString contains=kuinCharacterError
 			\ skip=/\v%(\\)@<!%(\\\\)*\\"/
 syn match	kuinCharacter	/'[^\']'/
 syn match	kuinCharacter	/'\\.'/	contains=kuinCharacterError
-"syn match	kuinCharacterError	/\v%(%(\\)@<!\\%(\\\\)*)@<!\\0/	contained " \0 isn't arrowed
+syn match	kuinCharacterError	/　/
 
 " kuinNumber {{{2
 syn match	kuinError	/\v<\d\w+>/		" e.g. 1000_000 => Error, 100yen => Error
@@ -55,8 +57,8 @@ syn keyword	kuinFunction	main
 "syn keyword	kuinNamespace	kuin cui lib
 "syn match	kuinFunction	"\v<%(kuin\@)@<=stop>"
 "syn match	kuinFunction	"\v<%(kuin\@)@<=act>"
-"syn keyword	kuinFunction	ToStr Len Copy
-"syn keyword	kuinFunction	Ctor Dtor
+"syn keyword	kuinFunction	toStr
+"syn keyword	kuinFunction	ctor dtor
 " }}}1
 " *Statement {{{1
 syn keyword	kuinStatement	skip var break ret assert
@@ -99,7 +101,6 @@ syn match	kuinError		/\v%(\?)@<=\s+%(\()@=/ contained " [? ( is not arrowed. It 
 syn match	kuinOperator	"#"
 syn match	kuinOperator	/\v\=/
 syn match	kuinError		/\v\={2,}/	" Use =    instead of ==
-syn match	kuinError		/;/
 syn match	kuinError		/\v%(<do\s+\w+%(\[\d+\])*\s*:)@<=\s+/	" [do VName : ] isn't correct sentence.
 syn match	kuinError		/\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/		" [do VName =] isn't correct sentence.
 syn match	kuinError		/\v%(<var\s+\w+\s*:\s*%(\[\])*\w+\s*)@<=\=/	" [var VName : Type =] isn't correct sentence.
@@ -141,12 +142,12 @@ syn keyword	kuinType	bit8 bit16 bit32 bit64
 syn keyword	kuinStorageClass	const
 syn region	kuinBlock contains=ALLBUT,kuinDoLessError
 			\ matchgroup=kuinStructure
-			\ start=/\v%(^\s*-?\s*)@<=<enum>/
+			\ start=/\v%(^\s*)@<=<enum>/
 			\ end=/\v%(^\s*)@<=<end\s+enum>/
 			\ fold
 syn region  kuinBlock contains=ALLBUT,kuinDoStatement
 			\ matchgroup=kuinStructure
-			\ start=/\v%(^\s*-?\s*)@<=<class>/
+			\ start=/\v%(^\s*\+?\s*)@<=<class>/
 			\ end=/\v%(^\s*)@<=<end\s+class>/
 			\ fold
 " }}}1
@@ -158,6 +159,7 @@ syn match	kuinTodo contained "\v%(\s|\{)@<=☆%(\s|\})@="
 " def link {{{1
 " *Comment
 hi def link kuinBlockComment	Comment
+hi def link kuinLineComment		Comment
 " *Constant
 hi def link kuinConstant		Constant
 hi def link kuinString			String
