@@ -1,6 +1,7 @@
 " Vim indent file
 " Language:     Kuin
 " Maintainer:   @tatt61880
+" Last Modified:2017/01/11 00:05:59.
 "
 " Special Thanks:
 "   http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
@@ -22,6 +23,7 @@ if(b:kuin_auto_end == 1)
 	inoremap <expr><silent><buffer> <CR> AutoEnd()
 	function! AutoEnd()
 		if synIDattr(synID(v:lnum, 1, 1), 'name') != "kuinComment"
+			let m = matchstr(getline('.'), '\v^\s*%(\zs%(if|switch|while|for|foreach|try|ifdef|block)|\+?\*?\zsfunc|\+?\zs%(class|enum))\ze>')
 			if(m != "")
 				return "\<C-O>oend " . m . "\<C-O>O"
 			endif
@@ -37,6 +39,7 @@ function! GetKuinIndent()
 	endif
 	let ind = indent(plnum)
 	if synIDattr(synID(plnum, 1, 1), 'name') != "kuinComment"
+		if getline(plnum) =~# '\v^\s*%(if|elif|else|switch|case|default|while|for|foreach|try|catch|finally|ifdef|block|\+?\*?func|\+?class|\+?enum)>'
 			let ind += &l:shiftwidth
 		endif
 	endif
