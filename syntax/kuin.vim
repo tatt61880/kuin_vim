@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/01/10 22:50:24.
+" Last Modified:2017/01/10 23:19:43.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -128,7 +128,7 @@ syn keyword	kuinType	bit8 bit16 bit32 bit64
 syn keyword	kuinStorageClass	const
 syn region	kuinBlock contains=ALLBUT
 			\ matchgroup=kuinStructure
-			\ start=/\v%(^\s*)@<=<enum>/
+			\ start=/\v%(^\s*\+?\s*)@<=<enum>/
 			\ end=/\v%(^\s*)@<=<end\s+enum>/
 			\ fold
 syn region  kuinBlock contains=ALLBUT,kuinDoStatement
