@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/01/10 23:19:43.
+" Last Modified:2017/01/22 13:23:04.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -76,7 +76,6 @@ syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ end=/\v%(^\s*)@<=<end\s+\z1>/
 			\ fold
 syn keyword	kuinLabel case default
-syn match	kuinError		"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" " In global scope, [var VName: type ::] isn't arrowed.
 syn match	kuinOperator	"\v\s*\:%(:|\+|\-|\*|\/|\%|\^|\~|\$)" contained " ::
 syn match	kuinClassError	"\v%(^\s*var\s+\w+\s*:\s*%(\[\])*\w+)@<=\s*::.*" contained " In class member definition, [var VName: type ::] isn't arrowed.
 syn match	kuinOperator	"\~"	contained
