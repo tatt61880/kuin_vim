@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/02/11 23:16:06.
+" Last Modified:2017/02/12 23:35:17.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -29,13 +29,13 @@ syn keyword	kuinConstant null inf
 syn region	kuinString contains=kuinCharacterError,kuinExprInString
 			\ start=/"/
 			\ end=/"\|$/
-			\ skip=/\v%(\\)@<!%(\\\\)*\\"/
+			\ skip=/\v%(\\)@1<!%(\\\\)*\\"/
 syn match	kuinCharacter	/'[^\']'/
 syn match	kuinCharacter	/'\\.'/	contains=kuinCharacterError
 syn match	kuinCharacterError	/　/
-syn region	kuinExprInString contained contains=kuinString
-			\ start='\\{'
-			\ end='}'
+syn region	kuinExprInString contained contains=kuinString,kuinCharacter,kuinNumber,kuinBlockComment,kuinOperator,kuinBoolean
+			\ start=/\v%(\\\{)@2<=/
+			\ end=/\v%(\})@=/
 
 " kuinNumber {{{2
 syn match	kuinError	/\v<\d\w+>/		" e.g. 1000_000 => Error, 100yen => Error
