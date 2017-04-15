@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/04/15 02:42:29.
+" Last Modified:2017/04/15 23:07:35.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -34,7 +34,7 @@ syn match	kuinCharacter	/'[^\']'/
 syn match	kuinCharacter	/'\\.'/	contains=kuinCharacterError
 syn match	kuinCharacterError	/　/
 syn region	kuinExprInString contained contains=kuinString,kuinCharacter,kuinNumber,kuinBlockComment,kuinOperator,kuinBoolean
-			\ start=/\v%(\\\{)@2<=/
+			\ start=/\v%([^\\]%(\\\\)*\\\{)@<=/
 			\ end=/\v%(\})@=/
 
 " kuinNumber {{{2
