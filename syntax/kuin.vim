@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/04/15 23:07:35.
+" Last Modified:2017/04/15 23:33:56.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -39,7 +39,7 @@ syn region	kuinExprInString contained contains=kuinString,kuinCharacter,kuinNumb
 
 " kuinNumber {{{2
 syn match	kuinError	/\v<\d\w+>/		" e.g. 1000_000 => Error, 100yen => Error
-syn match	kuinNumber	/\v<\d+b%(8|16|32|64)>/
+syn match	kuinNumber	/\v<\d+%(b%(8|16|32|64))?>/
 syn match	kuinNumber	/\v<\d+\.\d+%(e[\+\-]\d+)?>/
 syn match	kuinError	/\v<10#/		" e.g.  10#9999 => Error
 syn match	kuinError	/\v<\d+#\w+>/	" e.g. 100#FFFF => Error, 8#8888 => Error
