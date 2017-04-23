@@ -1,6 +1,6 @@
 ## snippets for Kuin.
 #  @tatt61880
-#  Last Modified: 2016/12/11 13:31:21.
+#  Last Modified: 2017/04/16 00:51:19.
 
 snippet     block
 abbr        block (...) end block
@@ -34,7 +34,7 @@ abbr        foreach (...) end foreach
 
 snippet     func
 abbr        func (...) end func
-    func ${1:FuncName}(${2:arguments})${3: : int}
+    func ${1:FuncName}(${2:arguments})${3:: int}
         ${0}
     end func
 
@@ -46,7 +46,7 @@ abbr        if (...) end if
 
 snippet     ifdef
 abbr        ifdef (...) end ifdef
-    ifdef(${1:debug})
+    ifdef(${1:dbg})
         ${0}
     end ifdef
 
@@ -71,4 +71,3 @@ abbr        while (...) end while
     while (${1:true})
         ${0}
     end while
-
