@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/04/15 23:33:56.
+" Last Modified:2017/04/30 09:38:54.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -54,7 +54,7 @@ syn match	kuinKeyword		/\v%(^\s*)@<!<me>/
 syn keyword	kuinFunction	main
 " }}}1
 " *Statement {{{1
-syn keyword	kuinStatement	skip var break ret assert
+syn keyword	kuinStatement	skip var break ret assert alias
 syn keyword	kuinDoStatement	do
 syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinStatement
