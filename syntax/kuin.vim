@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/04/30 09:38:54.
+" Last Modified:2017/05/01 22:40:16.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -16,6 +16,7 @@ syn match	kuinSpecial	/#/
 syn match	kuinSpecial	/@/
 syn match	kuinSpecial	/\\/
 
+syn keyword	kuinKeyword		enum class block if switch ifdef for foreach while try me to end
 syn match	kuinError		/;/
 " *Comment {{{1
 syn region	kuinBlockComment contains=kuinBlockComment,kuinLineComment,kuinString,kuinCharacter,kuinTodo
@@ -54,7 +55,8 @@ syn match	kuinKeyword		/\v%(^\s*)@<!<me>/
 syn keyword	kuinFunction	main
 " }}}1
 " *Statement {{{1
-syn keyword	kuinStatement	skip var break ret assert alias
+syn keyword	kuinStatement	alias var
+syn keyword	kuinStatement	assert break ret skip
 syn keyword	kuinDoStatement	do
 syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinStatement
