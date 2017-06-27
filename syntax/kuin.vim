@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/06/25 22:24:41.
+" Last Modified:2017/06/27 22:00:45.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -39,11 +39,9 @@ syn region	kuinExprInString contained contains=kuinString,kuinCharacter,kuinNumb
 			\ end=/\v%(\})@=/
 
 " kuinNumber {{{2
-syn match	kuinError	/\v<\d\w+>/		" e.g. 1000_000 => Error, 100yen => Error
-syn match	kuinNumber	/\v<\d+\ze%(b%(8|16|32|64))?>/
+syn match	kuinType	/\v%(<\d+)@<=b%(8|16|32|64)>/
+syn match	kuinNumber	/\v<\d+\ze%(b\d*)?>/
 syn match	kuinNumber	/\v<\d+\.\d+%(e[\+\-]\d+)?>/
-syn match	kuinError	/\v<10#/		" e.g.  10#9999 => Error
-syn match	kuinError	/\v<\d+#\w+>/	" e.g. 100#FFFF => Error, 8#8888 => Error
 syn match	kuinNumber	/\v<2#[0-1]+%(%(\.[0-1]+)|\ze%(b%(8|16|32|64)))=>/
 syn match	kuinNumber	/\v<8#[0-7]+%(%(\.[0-7]+)|\ze%(b%(8|16|32|64)))=>/
 syn match	kuinNumber	/\v<16#[0-9A-F]+%(%(\.[0-9A-F]+)|\ze%(b%(8|16|32|64)))=>/
@@ -105,10 +103,10 @@ syn match	kuinError		/\v\|{2,}/		" Use |    instead of ||
 syn match	kuinError		/\v\+{2,}/		" Use :+ 1 instead of ++
 syn match	kuinError		/\v\-{2,}/		" Use :- 1 instead of --
 syn match	kuinError		/\v%(<do\s+\w+%(\[\d+\])*\s*:)@<=\s+/	" [do VName : ] isn't correct sentence.
-syn match	kuinError		/\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/		" [do VName =] isn't correct sentence.
+syn match	kuinError		/\v%(<do\s+\w+%(\[\d+\])*\s*)@<=\=/		" [do VName = ] isn't correct sentence.
 syn match	kuinError		/\v%(<var\s+\w+\s*:\s*%(\[\])*\w+\s*)@<=\=/	" [var VName : Type =] isn't correct sentence.
 syn match	kuinError		/\v%(<var\s+\w+\s*)@<=::/	" [var VName ::] isn't correct sentence.
-syn match	kuinError		/\v%(\?)@<=\s+%(\()@=/ contained " [? ( is not arrowed. It should be ?(]
+syn match	kuinError		/\v%(\?)@<=\s+%(\()@=/ contained " [? (] is not arrowed. It should be [?(]
 syn keyword	kuinException throw catch finally
 syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinException
