@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/06/27 22:00:45.
+" Last Modified:2017/06/27 22:33:40.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -34,9 +34,12 @@ syn region	kuinString contains=kuinCharacterError,kuinExprInString
 syn match	kuinCharacter	/'[^\']'/
 syn match	kuinCharacter	/'\\.'/	contains=kuinCharacterError
 syn match	kuinCharacterError	/　/
+
 syn region	kuinExprInString contained contains=kuinString,kuinCharacter,kuinNumber,kuinBlockComment,kuinOperator,kuinBoolean
-			\ start=/\v%([^\\]%(\\\\)*\\\{)@<=/
+			\ start=/\v%([^\\]%(\\\\)*\\\{)@5<=/
 			\ end=/\v%(\})@=/
+			" NOTE: I've used @5<= instead of @<=
+			"       This means that I took better performance than accurate parsing.
 
 " kuinNumber {{{2
 syn match	kuinType	/\v%(<\d+)@<=b%(8|16|32|64)>/
