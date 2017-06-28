@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/06/27 22:33:40.
+" Last Modified:2017/06/28 20:59:26.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -16,7 +16,8 @@ syn match	kuinSpecial	/#/
 syn match	kuinSpecial	/@/
 syn match	kuinSpecial	/\\/
 
-syn keyword	kuinKeyword		enum class block if switch ifdef for foreach while try me to end
+syn keyword	kuinKeyword		enum class block if switch ifdef for foreach while try end
+syn keyword	kuinKeyword		me to
 syn match	kuinError		/;/
 " *Comment {{{1
 syn region	kuinBlockComment contains=kuinBlockComment,kuinLineComment,kuinString,kuinCharacter,kuinTodo
@@ -36,10 +37,8 @@ syn match	kuinCharacter	/'\\.'/	contains=kuinCharacterError
 syn match	kuinCharacterError	/　/
 
 syn region	kuinExprInString contained contains=kuinString,kuinCharacter,kuinNumber,kuinBlockComment,kuinOperator,kuinBoolean
-			\ start=/\v%([^\\]%(\\\\)*\\\{)@5<=/
-			\ end=/\v%(\})@=/
-			" NOTE: I've used @5<= instead of @<=
-			"       This means that I took better performance than accurate parsing.
+			\ start=/\v[^\\]%(\\\\)*\\\{\zs/
+			\ end=/\v\ze\}/
 
 " kuinNumber {{{2
 syn match	kuinType	/\v%(<\d+)@<=b%(8|16|32|64)>/
@@ -52,7 +51,6 @@ syn match	kuinNumber	/\v<16#[0-9A-F]+%(%(\.[0-9A-F]+)|\ze%(b%(8|16|32|64)))=>/
 syn keyword	kuinBoolean	true false
 " }}}1
 " *Identifier {{{1
-syn match	kuinKeyword		/\v%(^\s*)@<!<me>/
 syn keyword	kuinFunction	main
 " }}}1
 " *Statement {{{1
