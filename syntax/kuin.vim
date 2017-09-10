@@ -16,7 +16,7 @@ syn match	kuinSpecial	/#/
 syn match	kuinSpecial	/@/
 syn match	kuinSpecial	/\\/
 
-syn keyword	kuinKeyword		enum class block if switch ifdef for foreach while try end
+syn keyword	kuinKeyword		enum class block if switch for foreach while try end
 syn keyword	kuinKeyword		me to
 syn match	kuinError		/;/
 " *Comment {{{1
@@ -117,11 +117,6 @@ syn region	kuinBlock contains=ALLBUT,kuinClassError
 " }}}1
 " *PreProc {{{1
 syn keyword	kuinPreCondit dbg rls
-syn region	kuinBlock contains=ALLBUT,kuinClassError
-			\ matchgroup=kuinPreCondit
-			\ start=/\v%(^\s*)@<=<ifdef>/
-			\ end=/\v%(^\s*)@<=<end\s+ifdef>/
-			\ fold
 " }}}1
 " *Type {{{1
 syn keyword	kuinType	int float char bool list stack queue dict
@@ -191,7 +186,7 @@ let s:matchpairs_func	= '\%(\%(\w\|\:\)\s\+\)\@\<\!\<func\>:' . '\<end\s\+func\>
 let s:matchpairs_if		= '\%(\<end\s\+\)\@\<\!\<if\>:'		. '\<elif\>:'	. '\<else\>:'		. '\<end\s\+if\>'
 let s:matchpairs_switch	= '\%(\<end\s\+\)\@\<\!\<switch\>:'	. '\<case\>:'	. '\<default\>:'	. '\<end\s\+switch\>'
 let s:matchpairs_try	= '\%(\<end\s\+\)\@\<\!\<try\>:'	. '\<catch\>:'	. '\<finally\>:'	. '\<end\s\+try\>'
-let s:matchpairs_other	= '\%(\<end\s\+\)\@\<\!\<\(class\|enum\|while\|for\|foreach\|ifdef\|block\)\>:' . '\<end\s\+\1\>'
+let s:matchpairs_other	= '\%(\<end\s\+\)\@\<\!\<\(class\|enum\|while\|for\|foreach\|block\)\>:' . '\<end\s\+\1\>'
 let b:match_words = &matchpairs . ',' . s:matchpairs_func . ',' . s:matchpairs_if . ',' . s:matchpairs_switch . ',' . s:matchpairs_try . ',' . s:matchpairs_other
 
 " vim:ts=4:sts=4:sw=4:noexpandtab:ft=vim
