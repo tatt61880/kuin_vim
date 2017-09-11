@@ -59,7 +59,7 @@ syn keyword	kuinStatement	assert break ret skip
 syn keyword	kuinDoStatement	do
 syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ matchgroup=kuinStatement
-			\ start=/\v%(^\s*\+?\s*\*?\s*)@<=<func>/
+			\ start=/\v%(^\s*\+?\s*\*?\s*\*?\s*)@<=<func>/
 			\ end=/\v%(^\s*)@<=<end\s+func>/
 			\ fold
 syn region	kuinBlock contains=ALLBUT,kuinClassError
@@ -120,7 +120,7 @@ syn keyword	kuinPreCondit dbg rls
 " }}}1
 " *Type {{{1
 syn keyword	kuinType	int float char bool list stack queue dict
-syn match	kuinType	"\v%(^\s*\+?\s*\*?\s*)@<!<func>"
+syn match	kuinType	"\v%(^\s*\+?\s*\*?\s*\*?\s*)@<!<func>"
 syn keyword	kuinType	bit8 bit16 bit32 bit64
 syn keyword	kuinStorageClass	const
 syn region	kuinBlock contains=ALLBUT

@@ -25,7 +25,7 @@ if(b:kuin_auto_end == 1)
 	" inoremap <expr><silent><buffer> <cr> AutoEnd('<cr>')
 
 	function! AutoEnd(c)
-		let m = matchstr(getline('.'), '\v^\s*%(\zs%(if|switch|while|for|foreach|try|block)|\+?\*?\zsfunc|\+?\zs%(class|enum))\ze>$')
+		let m = matchstr(getline('.'), '\v^\s*%(\zs%(if|switch|while|for|foreach|try|block)|\+?\*?\*?\zsfunc|\+?\zs%(class|enum))\ze>$')
 		if(m != "")
 			return "\<C-O>oend " . m . "\<C-O>k\<C-O>A" . a:c
 		endif
@@ -39,7 +39,7 @@ function! GetKuinIndent()
 		return 0
 	endif
 	let ind = indent(plnum)
-	if getline(plnum) =~# '\v^\s*%(if|elif|else|switch|case|default|while|for|foreach|try|catch|finally|block|\+?\*?func|\+?class|\+?enum)>'
+	if getline(plnum) =~# '\v^\s*%(if|elif|else|switch|case|default|while|for|foreach|try|catch|finally|block|\+?\*?\*?func|\+?class|\+?enum)>'
 		let ind += &l:shiftwidth
 	endif
 	if getline(v:lnum) =~# '\v^\s*%(end|elif|else|case|default|catch|finally)>'
