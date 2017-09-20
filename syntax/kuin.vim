@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/06/28 20:59:26.
+" Last Modified:2017/09/20 22:35:56.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -116,7 +116,7 @@ syn region	kuinBlock contains=ALLBUT,kuinClassError
 			\ fold
 " }}}1
 " *PreProc {{{1
-syn keyword	kuinPreCondit dbg rls
+syn keyword	kuinPreCondit dbg
 " }}}1
 " *Type {{{1
 syn keyword	kuinType	int float char bool list stack queue dict
