@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/11/08 09:05:55.
+" Last Modified:2017/12/01 20:32:50.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -41,9 +41,9 @@ syn region	kuinExprInString contained contains=kuinString,kuinCharacter,kuinNumb
 			\ end=/\v\ze\}/
 
 " kuinNumber {{{2
-syn match	kuinNumber	/\v<\d+\.\d+%(e[\+\-]\d+)?>/
 syn match	kuinNumber	/\v<%(2#[0-1]+|8#[0-7]+|16#[0-9A-F]+|\d+)\ze%(b%(8|16|32|64))?>/
 syn match	kuinType	/\v%(<%(2#[0-1]+|8#[0-7]+|16#[0-9A-F]+|\d+))@<=b%(8|16|32|64)>/
+syn match	kuinNumber	/\v<\d+\.\d+%(e[\+\-]\d+)?>/
 " }}}2
 syn keyword	kuinBoolean	true false
 " }}}1
