@@ -1,7 +1,7 @@
 " Vim indent file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/12/13 01:48:13.
+" Last Modified:2017/12/13 01:52:15.
 "
 " Special Thanks:
 "   http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
@@ -36,7 +36,7 @@ if(b:kuin_auto_end == 1)
 				let nind = indent(line + i)
 			endwhile
 			if(ind == nind)
-				if(matchstr(getline(line + i), '\v^\s*end>') != "")
+				if(matchstr(getline(line + i), '\v^\s*end ' . m . '>') != "")
 					return a:c
 				endif
 			endif
