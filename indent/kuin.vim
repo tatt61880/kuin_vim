@@ -1,7 +1,7 @@
 " Vim indent file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/12/13 02:01:22.
+" Last Modified:2017/12/13 02:06:28.
 "
 " Special Thanks:
 "   http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
@@ -38,6 +38,19 @@ if(b:kuin_auto_end == 1)
 			if(nline != 0 && ind == nind)
 				if(matchstr(getline(nline), '\v^\s*end ' . m . '>') != "")
 					return a:c
+				endif
+				if(m == 'if')
+					if(matchstr(getline(nline), '\v^\s*%(else|elif)>') != "")
+						return a:c
+					endif
+				elseif(m == 'switch')
+					if(matchstr(getline(nline), '\v^\s*%(case|default)>') != "")
+						return a:c
+					endif
+				elseif(m == 'try')
+					if(matchstr(getline(nline), '\v^\s*%(catch|finally)>') != "")
+						return a:c
+					endif
 				endif
 			endif
 			return "\<C-O>oend " . m . "\<C-O>k\<C-O>A" . a:c
