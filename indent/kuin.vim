@@ -1,7 +1,7 @@
 " Vim indent file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/12/18 01:57:14.
+" Last Modified:2017/12/18 02:12:04.
 "
 " Special Thanks:
 "   http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
@@ -25,7 +25,7 @@ if(b:kuin_auto_end == 1)
 	inoremap <expr><silent><buffer> <cr> AutoEnd('<cr>')
 
 	function! AutoEnd(c)
-		let m = matchstr(getline('.'), '\v^\s*%(\zs%(if|switch|while|for|try|block)|\+?\*?\*?\zsfunc|\+?\zs%(class|enum))\ze>$')
+		let m = matchstr(getline('.'), '\v^\s*%(\zs%(if|switch|while|for|try|block)|\+?\*?\*?\zsfunc|\+?\zs%(class|enum))\ze>')
 		if(m != "")
 			let line = line('.')
 			let ind = indent(line)
