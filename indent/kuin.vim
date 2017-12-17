@@ -1,7 +1,7 @@
 " Vim indent file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/12/13 02:06:28.
+" Last Modified:2017/12/18 01:57:14.
 "
 " Special Thanks:
 "   http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
@@ -32,7 +32,7 @@ if(b:kuin_auto_end == 1)
 			let nline = nextnonblank(line + 1)
 			let nind = indent(nline)
 			while(nline != 0 && ind < nind)
-				let nline = nextnonblank(line + 1)
+				let nline = nextnonblank(nline + 1)
 				let nind = indent(nline)
 			endwhile
 			if(nline != 0 && ind == nind)
