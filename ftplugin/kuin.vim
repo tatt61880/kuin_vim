@@ -1,7 +1,7 @@
 " Vim filetype plugin
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/12/21 22:43:47.
+" Last Modified:2017/12/22 00:31:44.
 "
 " == Usage ==
 " Put this file into "ftplugin" folder.
@@ -27,7 +27,7 @@ setlocal suffixesadd=.kn
 nnoremap <silent> <buffer> <C-k> :Kk<CR>
 
 let s:script_dir = expand('<sfile>:p:h')
-command! -nargs=* Kk :!Kk.bat % <args>
+command! -nargs=* Kk :!Kk.bat %:p <args>
 command! -nargs=* Kl :!kl.bat % <args>
 command! -nargs=* Kw :!kw.bat % <args>
 command! -nargs=* Kn :!kn.bat % <args>
