@@ -1,7 +1,7 @@
 " Vim filetype plugin
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/04/24 02:58:17.
+" Last Modified:2017/12/21 22:43:47.
 "
 " == Usage ==
 " Put this file into "ftplugin" folder.
@@ -24,12 +24,13 @@ setlocal path+=%UserProfile%/Documents/GitHub/Kuin-develop/package/sys/
 setlocal isfname=a-z,A-Z,48-57
 setlocal suffixesadd=.kn
 
-nnoremap <silent> <buffer> <C-k> :Ku<CR>
+nnoremap <silent> <buffer> <C-k> :Kk<CR>
 
-let s:script_dir = expand('<sfile>:p:h') 
-command! -nargs=* Kc :!kuincl.bat -q -i % -e cui <args>
-command! -nargs=* Kw :!kuincl.bat -q -i % -e wnd <args>
-command! -nargs=* Ku :Kc && out.exe<CR>
-command! -nargs=* Kn :Kw && out.exe<CR>
+let s:script_dir = expand('<sfile>:p:h')
+command! -nargs=* Kk :!Kk.bat % <args>
+command! -nargs=* Kl :!kl.bat % <args>
+command! -nargs=* Kw :!kw.bat % <args>
+command! -nargs=* Kn :!kn.bat % <args>
+command! -nargs=* Km :!km.bat % <args>
 
 " vim:ts=4:sts=4:sw=4:noexpandtab:ft=vim
