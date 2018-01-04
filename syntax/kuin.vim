@@ -1,7 +1,7 @@
 ﻿" Vim syntax file
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/12/01 20:32:50.
+" Last Modified:2018/01/04 14:07:08.
 "
 " == Usage ==
 " Put this file into "syntax" folder.
@@ -16,7 +16,7 @@ syn match	kuinSpecial	/#/
 syn match	kuinSpecial	/@/
 syn match	kuinSpecial	/\\/
 
-syn keyword	kuinKeyword		enum class block if switch for while try end
+syn keyword	kuinKeyword		enum class block if switch for while try end include
 syn keyword	kuinKeyword		me to
 syn match	kuinError		/;/
 " *Comment {{{1
