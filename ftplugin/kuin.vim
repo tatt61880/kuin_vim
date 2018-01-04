@@ -1,7 +1,7 @@
 " Vim filetype plugin
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2017/12/22 00:33:06.
+" Last Modified:2018/01/04 15:21:17.
 "
 " == Usage ==
 " Put this file into "ftplugin" folder.
@@ -23,6 +23,7 @@ setlocal shiftwidth=4
 setlocal path+=%UserProfile%/Documents/GitHub/Kuin-develop/package/sys/
 setlocal isfname=a-z,A-Z,48-57
 setlocal suffixesadd=.kn
+setlocal includeexpr=substitute(v:fname,'^',expand('%:r').'.','g')
 
 nnoremap <silent> <buffer> <C-k> :Kk<CR>
 
