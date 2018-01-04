@@ -23,7 +23,7 @@ setlocal shiftwidth=4
 setlocal path+=%UserProfile%/Documents/GitHub/Kuin-develop/package/sys/
 setlocal isfname=a-z,A-Z,48-57
 setlocal suffixesadd=.kn
-setlocal includeexpr=substitute(v:fname,'^',expand('%:r').'.','g')
+setlocal includeexpr=substitute(v:fname,'^',expand('%:r').'.','')
 
 nnoremap <silent> <buffer> <C-k> :Kk<CR>
 
