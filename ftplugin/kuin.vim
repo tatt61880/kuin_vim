@@ -28,10 +28,10 @@ setlocal includeexpr=substitute(v:fname,'^',expand('%:r').'.','')
 nnoremap <silent> <buffer> <C-k> :Kk<CR>
 
 let s:script_dir = expand('<sfile>:p:h')
-command! -nargs=* Kk :!Kk.bat %:p <args>
-command! -nargs=* Kl :!kl.bat %:p <args>
-command! -nargs=* Kw :!kw.bat %:p <args>
-command! -nargs=* Kn :!kn.bat %:p <args>
-command! -nargs=* Km :!km.bat %:p <args>
+command! -nargs=* Kk :silent !Kk.bat %:p <args>
+command! -nargs=* Kl :silent !kl.bat %:p <args>
+command! -nargs=* Kw :silent !kw.bat %:p <args>
+command! -nargs=* Kn :silent !kn.bat %:p <args>
+command! -nargs=* Km :silent !km.bat %:p <args>
 
 " vim:ts=4:sts=4:sw=4:noexpandtab:ft=vim
