@@ -1,7 +1,6 @@
 " Vim filetype plugin
 " Language:     Kuin
 " Maintainer:   @tatt61880
-" Last Modified:2018/01/04 15:21:17.
 "
 " == Usage ==
 " Put this file into "ftplugin" folder.
